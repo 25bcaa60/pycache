@@ -1,67 +1,76 @@
-<?php
-// Database connection
-$conn = new mysqli("localhost", "root", "", "portfolio_db");
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Insert data when form is submitted
-if (isset($_POST['submit'])) {
-
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $message = $_POST['message'];
-
-    $sql = "INSERT INTO contact (name, email, message)
-            VALUES ('$name', '$email', '$message')";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('Message Sent Successfully!');</script>";
-    } else {
-        echo "Error: " . $conn->error;
-    }
-}
-?>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>My Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         body {
-            font-family: Arial;
-            background-color: #f2f2f2;
             margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
         }
 
-        .container {
-            width: 60%;
-            margin: 50px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
-        }
-
-        h1 {
+        header {
+            background: #333;
+            color: white;
+            padding: 20px;
             text-align: center;
         }
 
-        input, textarea {
-            width: 100%;
+        nav {
+            background: #444;
+            text-align: center;
             padding: 10px;
-            margin-top: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: yellow;
+        }
+
+        section {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .projects {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
         }
 
         button {
-            margin-top: 15px;
-            padding: 10px 20px;
+            padding: 10px 15px;
+            border: none;
             background: #333;
             color: white;
-            border: none;
             cursor: pointer;
+            border-radius: 5px;
         }
 
         button:hover {
@@ -69,27 +78,58 @@ if (isset($_POST['submit'])) {
         }
     </style>
 </head>
-
 <body>
 
-<div class="container">
+<header>
+    <h1>Your Name</h1>
+    <p>Web Developer | PHP Developer | Student</p>
+</header>
 
-    <h1>Shaik Fariya</h1>
+<nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+</nav>
 
+<section id="about">
     <h2>About Me</h2>
-    <p>I am a web development student learning full stack development.</p>
+    <p>Hello! I am a web developer. I create websites using HTML, CSS, JavaScript, and PHP.</p>
+</section>
 
+<section id="projects">
+    <h2>My Projects</h2>
+
+    <div class="projects">
+        <div class="card">
+            <h3>Project 1</h3>
+            <p>Portfolio Website</p>
+            <button>View</button>
+        </div>
+
+        <div class="card">
+            <h3>Project 2</h3>
+            <p>Student Management System</p>
+            <button>View</button>
+        </div>
+
+        <div class="card">
+            <h3>Project 3</h3>
+            <p>Online Shop</p>
+            <button>View</button>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
     <h2>Contact Me</h2>
+    <p>Email: yourname@email.com</p>
+</section>
 
-    <form method="POST">
-        <input type="text" name="name" placeholder="Enter your name" required>
-        <input type="email" name="email" placeholder="Enter your email" required>
-        <textarea name="message" placeholder="Enter your message" required></textarea>
-        <button type="submit" name="submit">Send</button>
-    </form>
-
-</div>
+<footer>
+    <p>© 2026 Your Name | All Rights Reserved</p>
+</footer>
 
 </body>
 </html>
+
 
