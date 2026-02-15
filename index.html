@@ -1,135 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>My Portfolio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaik Fariya Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-        }
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-        header {
-            background: #333;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
 
-        nav {
-            background: #444;
-            text-align: center;
-            padding: 10px;
-        }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            color: yellow;
-        }
-
-        section {
-            padding: 40px;
-            text-align: center;
-        }
-
-        .projects {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .card {
-            background: white;
-            padding: 20px;
-            width: 250px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            border-radius: 10px;
-        }
-
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            margin-top: 20px;
-        }
-
-        button {
-            padding: 10px 15px;
-            border: none;
-            background: #333;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        button:hover {
-            background: #555;
-        }
-    </style>
 </head>
+
 <body>
 
-<header>
-    <h1>Your Name</h1>
-    <p>Web Developer | PHP Developer | Student</p>
-</header>
+<div class="container">
+    <div class="about-image">
+    <div class="top-photo">
+        <img src="images/photo.jpg" alt="shaik fariya">
+    </div
+    <h1 class="name">Shaik Fariya</h1>
+    <p class="role">BCA Student | Web Developer</p>
 
-<nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-</nav>
+    <!-- Education -->
+    <div class="card">
+        <h2>Education</h2>
+        <p><strong>College:</strong> Kristu Jayanti University</p>
+        <p><strong>Course:</strong> Bachelor of Computer Applications (BCA)</p>
+    </div>
 
-<section id="about">
-    <h2>About Me</h2>
-    <p>Hello! I am a web developer. I create websites using HTML, CSS, JavaScript, and PHP.</p>
-</section>
-
-<section id="projects">
-    <h2>My Projects</h2>
-
-    <div class="projects">
-        <div class="card">
-            <h3>Project 1</h3>
-            <p>Portfolio Website</p>
-            <button>View</button>
-        </div>
-
-        <div class="card">
-            <h3>Project 2</h3>
-            <p>Student Management System</p>
-            <button>View</button>
-        </div>
-
-        <div class="card">
-            <h3>Project 3</h3>
-            <p>Online Shop</p>
-            <button>View</button>
+    <!-- Skills -->
+    <div class="card">
+        <h2>Technical Skills</h2>
+        <div class="skills">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>MySQL</span>
         </div>
     </div>
-</section>
+<!-- About Me Section -->
+<div class="about-section">
 
-<section id="contact">
-    <h2>Contact Me</h2>
-    <p>Email: yourname@email.com</p>
-</section>
+   
 
-<footer>
-    <p>© 2026 Your Name | All Rights Reserved</p>
-</footer>
+    <div class="about-text">
+        <h2>About Me</h2>
+        <p>
+            I am Shaik Fariya, currently pursuing Bachelor of Computer Applications (BCA).
+            I am passionate about Web Development and continuously learning
+            HTML, CSS, JavaScript and MySQL.
+        </p>
+
+        <p>
+            Currently, I am building projects and improving my skills to become
+            a Full Stack Developer.
+        </p>
+    </div>
+
+</div>
+
+<hr>
+
+<h2>Projects</h2>
+
+<div class="projects">
+
+    <div class="project-card">
+        <h3>Personal Portfolio Website</h3>
+        <p>A responsive portfolio website built using HTML and CSS.</p>
+    </div>
+
+    <div class="project-card">
+        <h3>Simple Calculator</h3>
+        <p>A basic calculator using HTML, CSS and JavaScript.</p>
+    </div>
+
+    <div class="project-card">
+        <h3>Student Database</h3>
+        <p>A simple database project using MySQL.</p>
+    </div>
+ <hr>
+
+<h2>Resume</h2>
+
+<div class="resume-section">
+
+    <!-- Education -->
+    <h3>Education</h3>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <h4>Kristu Jayanti University</h4>
+            <span>2022 - 2025</span>
+            <p>Bachelor of Computer Applications (BCA)</p>
+        </div>
+
+        <div class="timeline-item">
+            <h4>Vivekananda Vidyalaya</h4>
+            <span>2020 - 2022</span>
+            <p>Higher Secondary Education</p>
+        </div>
+
+    </div>
+
+    <!-- Technical Skills -->
+    <h3>Technical Skills</h3>
+
+    <div class="resume-skills">
+        <span>HTML & CSS</span>
+        <span>JavaScript</span>
+        <span>Python Basics</span>
+        <span>MySQL</span>
+        <span>MS Office</span>
+    </div>
+
+</div>
+
+
+</div>
+
+
+    <!-- Contact Section -->
+    <div class="card">
+        <h2>Contact Me</h2>
+
+        <div class="social">
+            <a href="https://github.com/25bcaa60" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/shaik fariya" target="_blank">LinkedIn</a>
+            <a href="https://instagram.com/shaik_._fariya" target="_blank">Instagram</a>
+        </div>
+    </div>
+
+</div>
 
 </body>
 </html>
-
-
