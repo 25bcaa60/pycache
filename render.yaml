@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: fariya-portfolio
+    env: docker
+    region: oregon
+    plan: free
+    healthCheckPath: /
+    branches:
+      - main
