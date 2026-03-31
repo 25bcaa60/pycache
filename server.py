@@ -30,8 +30,16 @@ def serve_admin():
 
 @app.route('/<path:filename>')
 def serve_static(filename):
-    """Serve static files (CSS, JS, images)"""
-    return send_from_directory(BASE_DIR, filename)
+    """Serve static files and gracefully fall back to the homepage."""
+    target_path = os.path.join(BASE_DIR, filename)
+
+    if os.path.isfile(target_path):
+        return send_from_directory(BASE_DIR, filename)
+
+    if not filename.startswith('api/'):
+        return send_from_directory(BASE_DIR, 'index.html')
+
+    return jsonify({'error': 'Resource not found'}), 404
 
 @app.route('/health', methods=['GET'])
 def health_check():
@@ -129,7 +137,9 @@ def delete_message(message_id):
 # ===== Error Handlers =====
 @app.errorhandler(404)
 def not_found(e):
-    return jsonify({'error': 'Resource not found'}), 404
+    if request.path.startswith('/api/'):
+        return jsonify({'error': 'Resource not found'}), 404
+    return send_from_directory(BASE_DIR, 'index.html')
 
 @app.errorhandler(500)
 def server_error(e):

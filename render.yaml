@@ -2,6 +2,7 @@ services:
   - type: web
     name: fariya-portfolio
     runtime: python
+    rootDir: .
     region: oregon
     plan: free
     branch: main
