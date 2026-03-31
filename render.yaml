@@ -12,3 +12,14 @@ services:
     envVars:
       - key: FLASK_ENV
         value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: fariya-portfolio-db
+          property: connectionString
+
+databases:
+  - name: fariya-portfolio-db
+    plan: free
+    region: oregon
+    databaseName: portfolio
+    user: portfolio_user
