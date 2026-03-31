@@ -1,9 +1,14 @@
 services:
   - type: web
     name: fariya-portfolio
-    env: docker
+    runtime: python
     region: oregon
     plan: free
-    healthCheckPath: /
-    branches:
-      - main
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:$PORT --workers 2 --timeout 120 server:app
+    autoDeployTrigger: commit
+    healthCheckPath: /health
+    envVars:
+      - key: FLASK_ENV
+        value: production

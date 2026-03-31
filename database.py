@@ -5,9 +5,9 @@ Handles SQLite operations for contacts and visitor tracking
 
 import sqlite3
 import os
-from datetime import datetime
 
-DATABASE_NAME = 'portfolio.db'
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATABASE_NAME = os.path.join(BASE_DIR, 'portfolio.db')
 
 def get_db_connection():
     """Create a database connection"""

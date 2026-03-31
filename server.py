@@ -8,8 +8,10 @@ from flask_cors import CORS
 from database import init_database, add_contact, get_all_contacts, increment_visitor_count, get_visitor_count, delete_contact
 import os
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # Initialize Flask app
-app = Flask(__name__, static_folder='.')
+app = Flask(__name__, static_folder=BASE_DIR)
 CORS(app)  # Enable CORS for frontend requests
 
 # Initialize database on startup
@@ -19,17 +21,22 @@ init_database()
 @app.route('/')
 def serve_index():
     """Serve the main HTML page"""
-    return send_from_directory('.', 'index.html')
+    return send_from_directory(BASE_DIR, 'index.html')
 
 @app.route('/admin')
 def serve_admin():
     """Serve the admin dashboard page"""
-    return send_from_directory('.', 'admin.html')
+    return send_from_directory(BASE_DIR, 'admin.html')
 
 @app.route('/<path:filename>')
 def serve_static(filename):
     """Serve static files (CSS, JS, images)"""
-    return send_from_directory('.', filename)
+    return send_from_directory(BASE_DIR, filename)
+
+@app.route('/health', methods=['GET'])
+def health_check():
+    """Health check endpoint for Render"""
+    return jsonify({'status': 'ok'}), 200
 
 # ===== API Routes =====
 
@@ -37,7 +44,7 @@ def serve_static(filename):
 def submit_contact():
     """Handle contact form submissions"""
     try:
-        data = request.get_json()
+        data = request.get_json(silent=True) or {}
         
         # Validate required fields
         name = data.get('name', '').strip()
@@ -136,7 +143,7 @@ if __name__ == '__main__':
     print("\n🚀 Server starting...")
     
     # Get port from environment or use default
-    port = int(os.environ.get('PORT', 8080))
+    port = int(os.environ.get('PORT', 10000))
     is_production = os.environ.get('FLASK_ENV') == 'production'
     
     print(f"📍 Running on port {port}")

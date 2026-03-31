@@ -20,11 +20,11 @@ RUN pip install --upgrade pip && \
 COPY . .
 
 # Expose port
-EXPOSE 8080
+EXPOSE 10000
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8080').read()" || exit 1
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:10000/health').read()" || exit 1
 
 # Start application
-CMD exec gunicorn --bind 0.0.0.0:8080 --workers 4 --worker-class sync --timeout 30 --access-logfile - --error-logfile - server:app
+CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:${PORT:-10000} --workers 2 --worker-class sync --timeout 120 --access-logfile - --error-logfile - server:app"]
